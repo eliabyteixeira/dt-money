@@ -1,5 +1,6 @@
 # dt-money
-Application for personal financial control developed in ReactJS for study purposes!
+Aplicativo para controle financeiro pessoal desenvolvido em ReactJS para fins de estudo do curso Ignite da Rocketseat!
+#ignite #rocketseat
 
 # running the application
 - `npm i` to install the dependences
