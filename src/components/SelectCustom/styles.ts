@@ -30,7 +30,7 @@ export const Content = styled(Select.Content)`
   background: ${(props) => props.theme['gray-900']};
   :focus {
     outline: 0;
-    box-shadow: 0 0 0 0 ${(props) => props.theme['green-500']};
+    box-shadow: none;
   }
 `
 export const Item = styled(Select.Item)`

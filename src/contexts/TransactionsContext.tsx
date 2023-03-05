@@ -20,7 +20,7 @@ interface Category {
 
 interface TransactionsContextType {
   transactions: Transaction[]
-  fetchTransactions: (query?: string) => Promise<void>
+  fetchTransactions: (params?: object) => Promise<void>
   categorys: Category[]
   getDescriptionCategory: (category: string) => any
 }
@@ -34,12 +34,13 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
   const [transactions, setTransactions] = useState<Transaction[]>([])
   const [categorys, setCategorys] = useState<Category[]>([])
 
-  const fetchTransactions = useCallback(async (query?: string) => {
-    const response = await api.get('/transactions', {
+  const fetchTransactions = useCallback(async (params?: object) => {
+    console.log(params)
+    const response = await api.get(`/transactions${''}`, {
       params: {
         _sort: 'createdAt',
         _order: 'desc',
-        q: query,
+        ...params,
       },
     })
 

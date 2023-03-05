@@ -8,21 +8,29 @@ import {
   PriceHighLight,
   TransactionsContainer,
   TransactionsTable,
+  FilterContainer,
 } from './styles'
 
 export function Transactions() {
-  const { transactions, getDescriptionCategory } = useContextSelector(
-    TransactionsContext,
-    (context) => {
+  const { transactions, getDescriptionCategory, fetchTransactions } =
+    useContextSelector(TransactionsContext, (context) => {
       return context
-    },
-  )
+    })
 
   return (
     <div>
       <Header />
       <Summary />
       <TransactionsContainer>
+        <FilterContainer>
+          <button onClick={() => fetchTransactions({ type: 'income' })}>
+            entradas
+          </button>
+          <button onClick={() => fetchTransactions({ type: 'outcome' })}>
+            saídas
+          </button>
+          <button onClick={() => fetchTransactions()}>tudo</button>
+        </FilterContainer>
         <SearchForm />
         <TransactionsTable>
           <tbody>

@@ -29,8 +29,8 @@ export function SearchForm() {
     },
   )
 
-  async function handleSearchTransactions(data: SearchFormInputs) {
-    await fetchTransactions(data.query)
+  async function handleSearchTransactions({ query }: SearchFormInputs) {
+    await fetchTransactions({ q: query })
   }
 
   return (
