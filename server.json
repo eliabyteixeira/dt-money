@@ -5,7 +5,7 @@
       "description": "Desenvolvimento de site",
       "type": "income",
       "price": 12000,
-      "category": "Venda",
+      "category": "salario",
       "createdAt": "2023-03-01T03:26:17.377Z"
     },
     {
@@ -13,7 +13,7 @@
       "description": "Compra de pizza",
       "type": "outcome",
       "price": 100,
-      "category": "Alimentação",
+      "category": "alimentacao",
       "createdAt": "2023-03-01T04:26:17.377Z"
     },
     {
@@ -21,7 +21,7 @@
       "description": "Desenvolvimento de app",
       "type": "income",
       "price": 12900,
-      "category": "Venda",
+      "category": "venda-de-equipamentos",
       "createdAt": "2022-03-01T04:26:17.377Z"
     },
     {
@@ -29,16 +29,124 @@
       "description": "Compra de quentinhas",
       "type": "outcome",
       "price": 150,
-      "category": "Alimentação",
+      "category": "alimentacao",
       "createdAt": "2023-03-01T08:26:17.377Z"
     },
     {
       "description": "Hostinger 2023",
       "type": "outcome",
-      "category": "Hospedagens",
+      "category": "hospedagens",
       "price": 240,
       "createdAt": "2023-03-02T05:11:35.933Z",
       "id": 5
+    },
+    {
+      "description": "Abastecimento gran vitara",
+      "type": "outcome",
+      "category": "combustivel",
+      "price": 120,
+      "createdAt": "2023-03-05T17:06:38.194Z",
+      "id": 6
+    },
+    {
+      "description": "POG",
+      "type": "outcome",
+      "category": "alimentacao",
+      "price": 1000,
+      "createdAt": "2023-03-05T17:09:42.934Z",
+      "id": 7
+    },
+    {
+      "description": "Teste",
+      "type": "income",
+      "category": "venda-de-equipamentos",
+      "price": 11,
+      "createdAt": "2023-03-05T17:49:48.632Z",
+      "id": 8
+    },
+    {
+      "description": "Tese 2",
+      "type": "outcome",
+      "category": "alimentacao",
+      "price": 111,
+      "createdAt": "2023-03-05T17:50:31.167Z",
+      "id": 9
+    },
+    {
+      "description": "Compra POG",
+      "type": "outcome",
+      "category": "compra-de-equipamentos",
+      "price": 1000,
+      "createdAt": "2023-03-05T17:53:51.068Z",
+      "id": 10
+    }
+  ],
+  "categorys": [
+    {
+      "id": 1,
+      "description": "Salário",
+      "type": "income",
+      "value": "salario"
+    },
+    {
+      "id": 2,
+      "description": "Venda de equipamentos",
+      "type": "income",
+      "value": "venda-de-equipamentos"
+    },
+    {
+      "id": 3,
+      "description": "Venda de perfumes",
+      "type": "income",
+      "value": "venda-de-perfumes"
+    },
+    {
+      "id": 4,
+      "description": "Alimentaçāo",
+      "type": "outcome",
+      "value": "alimentacao"
+    },
+    {
+      "id": 5,
+      "description": "Combustível",
+      "type": "outcome",
+      "value": "combustivel"
+    },
+    {
+      "id": 6,
+      "description": "Aluguel",
+      "type": "outcome",
+      "value": "aluguel"
+    },
+    {
+      "id": 7,
+      "description": "Roupas",
+      "type": "outcome",
+      "value": "roupas"
+    },
+    {
+      "id": 8,
+      "description": "Compra de equipamentos",
+      "type": "outcome",
+      "value": "compra-de-equipamentos"
+    },
+    {
+      "id": 9,
+      "description": "Hospedagens",
+      "type": "outcome",
+      "value": "hospedagens"
+    },
+    {
+      "id": 10,
+      "description": "Domínios",
+      "type": "outcome",
+      "value": "dominios"
+    },
+    {
+      "id": 11,
+      "description": "Energia",
+      "type": "outcome",
+      "value": "energia"
     }
   ]
 }

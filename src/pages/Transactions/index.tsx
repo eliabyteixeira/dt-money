@@ -11,9 +11,12 @@ import {
 } from './styles'
 
 export function Transactions() {
-  const transactions = useContextSelector(TransactionsContext, (context) => {
-    return context.transactions
-  })
+  const { transactions, getDescriptionCategory } = useContextSelector(
+    TransactionsContext,
+    (context) => {
+      return context
+    },
+  )
 
   return (
     <div>
@@ -33,7 +36,7 @@ export function Transactions() {
                       {priceFormatter.format(transaction.price)}
                     </PriceHighLight>
                   </td>
-                  <td>{transaction.category}</td>
+                  <td>{getDescriptionCategory(transaction.category)}</td>
                   <td>
                     {dateFormatter.format(new Date(transaction.createdAt))}
                   </td>

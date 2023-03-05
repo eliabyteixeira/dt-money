@@ -1,5 +1,6 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import { ArrowCircleDown, ArrowCircleUp, X } from 'phosphor-react'
+import { SelectCustom } from '../SelectCustom'
 import { Controller, useForm } from 'react-hook-form'
 import {
   CloseButton,
@@ -11,6 +12,8 @@ import {
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod'
 import { api } from '../../lib/axios'
+import { useContextSelector } from 'use-context-selector'
+import { TransactionsContext } from '../../contexts/TransactionsContext'
 
 const newTransactionFormSchema = zod.object({
   description: zod.string(),
@@ -22,7 +25,13 @@ const newTransactionFormSchema = zod.object({
 // isso vai retornar a tipagem dos campos do formulario
 type NewTransactionFormInputs = zod.infer<typeof newTransactionFormSchema>
 
-export function NewTransactionModal() {
+interface NewTransactionModalProps {
+  onOpenChangeModal: (value: boolean) => void
+}
+
+export function NewTransactionModal({
+  onOpenChangeModal,
+}: NewTransactionModalProps) {
   const {
     reset,
     control,
@@ -36,10 +45,14 @@ export function NewTransactionModal() {
     },
   })
 
+  const categorys = useContextSelector(TransactionsContext, (context) => {
+    return context.categorys
+  })
+
   async function handleCreateNewTransaction(data: NewTransactionFormInputs) {
     const { description, type, category, price } = data
 
-    await api.post('/transactions', {
+    const response = await api.post('/transactions', {
       description,
       type,
       category,
@@ -47,7 +60,10 @@ export function NewTransactionModal() {
       createdAt: new Date(),
     })
 
-    reset()
+    if (response.status === 201) {
+      reset()
+      onOpenChangeModal(false)
+    }
   }
 
   return (
@@ -74,11 +90,20 @@ export function NewTransactionModal() {
               valueAsNumber: true,
             })}
           />
-          <input
-            type="text"
-            placeholder="Categoria"
-            required
-            {...register('category')}
+
+          <Controller
+            control={control}
+            name="category"
+            render={({ field }) => {
+              return (
+                <SelectCustom
+                  items={categorys}
+                  defaultValue=""
+                  onValueChange={field.onChange}
+                  value={field.value}
+                />
+              )
+            }}
           />
 
           <Controller

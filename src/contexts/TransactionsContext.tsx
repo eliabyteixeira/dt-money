@@ -11,9 +11,18 @@ interface Transaction {
   createdAt: string
 }
 
+interface Category {
+  id: number
+  description: string
+  type: string
+  value: string
+}
+
 interface TransactionsContextType {
   transactions: Transaction[]
   fetchTransactions: (query?: string) => Promise<void>
+  categorys: Category[]
+  getDescriptionCategory: (category: string) => any
 }
 
 export const TransactionsContext = createContext({} as TransactionsContextType)
@@ -23,6 +32,7 @@ interface TransactionsProviderProps {
 }
 export function TransactionsProvider({ children }: TransactionsProviderProps) {
   const [transactions, setTransactions] = useState<Transaction[]>([])
+  const [categorys, setCategorys] = useState<Category[]>([])
 
   const fetchTransactions = useCallback(async (query?: string) => {
     const response = await api.get('/transactions', {
@@ -32,11 +42,28 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
         q: query,
       },
     })
-    console.log(response.data)
-    setTransactions(response.data)
+
+    if (response.status === 200) {
+      setTransactions(response.data)
+    }
   }, [])
 
+  async function fetchCategorys() {
+    const response = await api.get('/categorys')
+    if (response.status === 200) {
+      setCategorys(response.data)
+    }
+  }
+
+  function getDescriptionCategory(category: string) {
+    const description = categorys.find(
+      (item) => category === item.value,
+    )?.description
+    return description || ''
+  }
+
   useEffect(() => {
+    fetchCategorys()
     fetchTransactions()
   }, [fetchTransactions])
 
@@ -45,6 +72,8 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
       value={{
         transactions,
         fetchTransactions,
+        categorys,
+        getDescriptionCategory,
       }}
     >
       {children}
