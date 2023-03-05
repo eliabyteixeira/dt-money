@@ -65,7 +65,7 @@
       "id": 8
     },
     {
-      "description": "Tese 2",
+      "description": "Teste 2",
       "type": "outcome",
       "category": "alimentacao",
       "price": 111,
@@ -73,12 +73,20 @@
       "id": 9
     },
     {
-      "description": "Compra POG",
+      "description": "Compra Teste",
       "type": "outcome",
       "category": "compra-de-equipamentos",
       "price": 1000,
       "createdAt": "2023-03-05T17:53:51.068Z",
       "id": 10
+    },
+    {
+      "description": "Cabelo Kettwly",
+      "type": "outcome",
+      "category": "cuidados-pessoais",
+      "price": 215,
+      "createdAt": "2023-03-05T22:27:08.804Z",
+      "id": 11
     }
   ],
   "categorys": [
@@ -147,6 +155,12 @@
       "description": "Energia",
       "type": "outcome",
       "value": "energia"
+    },
+    {
+      "id": 12,
+      "description": "Cuidados pessoais",
+      "type": "outcome",
+      "value": "cuidados-pessoais"
     }
   ]
 }

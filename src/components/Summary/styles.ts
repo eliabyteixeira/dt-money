@@ -21,12 +21,17 @@ export const SummaryCard = styled.div<SummaryCardProps>`
       : props.theme['gray-600']};
   border-radius: 6px;
   padding: 2rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 
   header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     color: ${(props) => props.theme['gray-300']};
+
+    span {
+      font-weight: 700;
+    }
   }
 
   strong {
