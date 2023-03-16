@@ -2,7 +2,14 @@ import { ReactNode, useCallback, useEffect, useState } from 'react'
 import { createContext } from 'use-context-selector'
 import { api } from '../lib/axios'
 
-interface Transaction {
+type Pagination = {
+  totalItens: number
+  totalPages: number
+  currentPage: number
+  countItens: number
+  pages: number[]
+}
+interface TransactionData {
   id: number
   type: 'income' | 'outcome'
   description: string
@@ -10,7 +17,10 @@ interface Transaction {
   category: string
   createdAt: string
 }
-
+interface Transaction {
+  data: TransactionData[]
+  pagination: Pagination
+}
 interface Category {
   id: number
   description: string
@@ -18,36 +28,70 @@ interface Category {
   value: string
 }
 
+type RequestProps = {
+  _page?: number
+  type?: string
+  q?: string
+}
 interface TransactionsContextType {
-  transactions: Transaction[]
-  fetchTransactions: (params?: object) => Promise<void>
+  transactions: Transaction
+  fetchTransactions: (params: RequestProps) => Promise<void>
   categorys: Category[]
   getDescriptionCategory: (category: string) => any
 }
 
 export const TransactionsContext = createContext({} as TransactionsContextType)
-
 interface TransactionsProviderProps {
   children: ReactNode
 }
 export function TransactionsProvider({ children }: TransactionsProviderProps) {
-  const [transactions, setTransactions] = useState<Transaction[]>([])
   const [categorys, setCategorys] = useState<Category[]>([])
+  const [transactions, setTransactions] = useState<Transaction>({
+    data: [],
+    pagination: {
+      totalItens: 0,
+      totalPages: 0,
+      currentPage: 0,
+      countItens: 0,
+      pages: [],
+    },
+  })
 
-  const fetchTransactions = useCallback(async (params?: object) => {
-    console.log(params)
-    const response = await api.get(`/transactions${''}`, {
-      params: {
+  const fetchTransactions = useCallback(
+    async ({ type, _page, q }: RequestProps) => {
+      const params = {
+        type,
+        q,
         _sort: 'createdAt',
         _order: 'desc',
-        ...params,
-      },
-    })
+        _page,
+        _limit: 10,
+      }
 
-    if (response.status === 200) {
-      setTransactions(response.data)
-    }
-  }, [])
+      if (type === '') delete params.type
+      if (q === '') delete params.q
+      if (_page === 0) delete params._page
+
+      const response = await api.get(`/transactions${''}`, { params })
+
+      if (response.status === 200) {
+        const totalCount: number = response.headers['x-total-count'] || 0
+        const totalPages: number = Math.ceil(totalCount / 10) || 1
+
+        setTransactions({
+          data: response.data,
+          pagination: {
+            totalItens: Number(totalCount),
+            totalPages,
+            currentPage: _page || 1,
+            countItens: response.data.length,
+            pages: Array.from({ length: totalPages }, (v, k) => k + 1),
+          },
+        })
+      }
+    },
+    [],
+  )
 
   async function fetchCategorys() {
     const response = await api.get('/categorys')
@@ -65,7 +109,7 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
 
   useEffect(() => {
     fetchCategorys()
-    fetchTransactions()
+    fetchTransactions({ _page: 0 })
   }, [fetchTransactions])
 
   return (

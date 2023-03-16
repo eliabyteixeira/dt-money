@@ -1,5 +1,6 @@
 import { useContextSelector } from 'use-context-selector'
 import { Header } from '../../components/Header'
+import { Pagination } from '../../components/Pagination'
 import { SearchForm } from '../../components/SearchForm'
 import { Summary } from '../../components/Summary'
 import { TransactionsContext } from '../../contexts/TransactionsContext'
@@ -23,20 +24,27 @@ export function Transactions() {
       <Summary />
       <TransactionsContainer>
         <FilterContainer>
-          <button onClick={() => fetchTransactions()} autoFocus={true}>
+          <button
+            onClick={() => fetchTransactions({ type: '', _page: 1 })}
+            autoFocus={true}
+          >
             Tudo
           </button>
-          <button onClick={() => fetchTransactions({ type: 'income' })}>
+          <button
+            onClick={() => fetchTransactions({ type: 'income', _page: 1 })}
+          >
             Entradas
           </button>
-          <button onClick={() => fetchTransactions({ type: 'outcome' })}>
+          <button
+            onClick={() => fetchTransactions({ type: 'outcome', _page: 1 })}
+          >
             Saídas
           </button>
         </FilterContainer>
         <SearchForm />
         <TransactionsTable>
           <tbody>
-            {transactions.map((transaction) => {
+            {transactions?.data.map((transaction) => {
               return (
                 <tr key={transaction.id}>
                   <td width="50%">{transaction.description}</td>
@@ -56,6 +64,7 @@ export function Transactions() {
           </tbody>
         </TransactionsTable>
       </TransactionsContainer>
+      <Pagination />
     </div>
   )
 }

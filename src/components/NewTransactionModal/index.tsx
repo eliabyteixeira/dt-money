@@ -14,12 +14,14 @@ import * as zod from 'zod'
 import { api } from '../../lib/axios'
 import { useContextSelector } from 'use-context-selector'
 import { TransactionsContext } from '../../contexts/TransactionsContext'
+import { dateToSave } from '../../utils/formatter'
 
 const newTransactionFormSchema = zod.object({
   description: zod.string(),
   price: zod.number(),
   category: zod.string(),
   type: zod.enum(['income', 'outcome']),
+  createdAt: zod.date(),
 })
 
 // isso vai retornar a tipagem dos campos do formulario
@@ -45,24 +47,28 @@ export function NewTransactionModal({
     },
   })
 
-  const categorys = useContextSelector(TransactionsContext, (context) => {
-    return context.categorys
-  })
+  //  const { transactions, getDescriptionCategory, fetchTransactions } =
+  //   useContextSelector(TransactionsContext, (context) => {
+  //     return context
+  //   })
+
+  const { categorys, fetchTransactions } = useContextSelector(
+    TransactionsContext,
+    (context) => {
+      return context
+    },
+  )
 
   async function handleCreateNewTransaction(data: NewTransactionFormInputs) {
-    const { description, type, category, price } = data
-
     const response = await api.post('/transactions', {
-      description,
-      type,
-      category,
-      price,
-      createdAt: new Date(),
+      ...data,
+      createdAt: dateToSave(data.createdAt),
     })
 
     if (response.status === 201) {
       reset()
       onOpenChangeModal(false)
+      fetchTransactions()
     }
   }
 
@@ -82,12 +88,22 @@ export function NewTransactionModal({
             required
             {...register('description')}
           />
+
           <input
             type="number"
             placeholder="Preço"
             required
             {...register('price', {
               valueAsNumber: true,
+            })}
+          />
+
+          <input
+            type="date"
+            placeholder="Data"
+            required
+            {...register('createdAt', {
+              valueAsDate: true,
             })}
           />
 

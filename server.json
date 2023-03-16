@@ -87,6 +87,94 @@
       "price": 215,
       "createdAt": "2023-03-05T22:27:08.804Z",
       "id": 11
+    },
+    {
+      "description": "Pizza Na casa de Gustavo",
+      "type": "outcome",
+      "category": "alimentacao",
+      "price": 66,
+      "createdAt": "2023-03-07T01:42:48.429Z",
+      "id": 12
+    },
+    {
+      "description": "Teste com data input",
+      "type": "outcome",
+      "category": "hospedagens",
+      "price": 120,
+      "createdAt": "2023-03-01T00:00:00.000Z",
+      "id": 13
+    },
+    {
+      "description": "Novo teste",
+      "type": "outcome",
+      "category": "roupas",
+      "price": 12000,
+      "createdAt": "2023-03-01T00:00:00.000Z",
+      "id": 14
+    },
+    {
+      "description": "Venda de notebook",
+      "type": "income",
+      "category": "venda-de-equipamentos",
+      "price": 4000,
+      "createdAt": "2023-03-01T00:00:00.000Z",
+      "id": 15
+    },
+    {
+      "description": "Compra de pastel",
+      "type": "outcome",
+      "category": "alimentacao",
+      "price": 8,
+      "createdAt": "2022-04-01T00:00:00.000Z",
+      "id": 16
+    },
+    {
+      "description": "Compra de galeto",
+      "type": "outcome",
+      "category": "alimentacao",
+      "price": 22,
+      "createdAt": "2022-12-01T00:00:00.000Z",
+      "id": 17
+    },
+    {
+      "description": "Compra de pato",
+      "type": "outcome",
+      "category": "alimentacao",
+      "price": 45,
+      "createdAt": "2023-02-01T00:00:00.000Z",
+      "id": 18
+    },
+    {
+      "description": "Tese",
+      "type": "income",
+      "category": "combustivel",
+      "price": 100,
+      "createdAt": "Fri, 01 Apr 2022 00:00:00 GMT",
+      "id": 19
+    },
+    {
+      "description": "Agora com data talvez correta",
+      "type": "outcome",
+      "category": "compra-de-equipamentos",
+      "price": 1400,
+      "createdAt": "2022-04-01 00:00:00 GMT-0300",
+      "id": 20
+    },
+    {
+      "description": "Novo teste com toSave",
+      "type": "outcome",
+      "category": "aluguel",
+      "price": 140,
+      "createdAt": "2023-03-01 00:00:00 GMT-0300",
+      "id": 21
+    },
+    {
+      "description": "auto fetch",
+      "price": 40,
+      "category": "compra-de-equipamentos",
+      "type": "outcome",
+      "createdAt": "2022-04-01 00:00:00 GMT-0300",
+      "id": 22
     }
   ],
   "categorys": [

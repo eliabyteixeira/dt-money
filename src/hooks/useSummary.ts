@@ -8,7 +8,7 @@ export function useSummary() {
   })
 
   const summary = useMemo(() => {
-    return transactions.reduce(
+    return transactions.data.reduce(
       (acc, transaction) => {
         if (transaction.type === 'income') {
           acc.income += transaction.price
