@@ -72,7 +72,7 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
       if (q === '') delete params.q
       if (_page === 0) delete params._page
 
-      const response = await api.get(`/transactions${''}`, { params })
+      const response = await api.get(`/transactions`, { params })
 
       if (response.status === 200) {
         const totalCount: number = response.headers['x-total-count'] || 0

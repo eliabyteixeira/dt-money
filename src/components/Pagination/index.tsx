@@ -1,5 +1,10 @@
 import { PaginationContainer } from './styles'
-import { CaretLeft, CaretRight } from 'phosphor-react'
+import {
+  CaretLeft,
+  CaretDoubleLeft,
+  CaretRight,
+  CaretDoubleRight,
+} from 'phosphor-react'
 import { TransactionsContext } from '../../contexts/TransactionsContext'
 import { useContextSelector } from 'use-context-selector'
 
@@ -22,6 +27,18 @@ export function Pagination() {
             : `Nenhum registro encontrado`}
         </span>
         <ul>
+          <li>
+            <button
+              onClick={() =>
+                fetchTransactions({
+                  _page: 0,
+                })
+              }
+              // disabled={transactions.pagination.currentPage === 1}
+            >
+              <CaretDoubleLeft size={22} />
+            </button>
+          </li>
           <li>
             <button
               onClick={() =>
@@ -64,6 +81,21 @@ export function Pagination() {
               }
             >
               <CaretRight size={22} />
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() =>
+                fetchTransactions({
+                  _page: transactions.pagination.totalPages,
+                })
+              }
+              // disabled={
+              //   transactions.pagination.currentPage ===
+              //   transactions.pagination.totalPages
+              // }
+            >
+              <CaretDoubleRight size={22} />
             </button>
           </li>
         </ul>
