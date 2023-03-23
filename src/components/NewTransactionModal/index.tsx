@@ -68,7 +68,7 @@ export function NewTransactionModal({
     if (response.status === 201) {
       reset()
       onOpenChangeModal(false)
-      fetchTransactions()
+      fetchTransactions({ _page: 0 })
     }
   }
 

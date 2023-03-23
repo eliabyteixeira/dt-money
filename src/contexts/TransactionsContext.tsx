@@ -36,6 +36,8 @@ type RequestProps = {
 interface TransactionsContextType {
   transactions: Transaction
   fetchTransactions: (params: RequestProps) => Promise<void>
+  transactionsSummary: TransactionData[]
+  fetchTransactionsSummary: (params: RequestProps) => Promise<void>
   categorys: Category[]
   getDescriptionCategory: (category: string) => any
 }
@@ -46,6 +48,9 @@ interface TransactionsProviderProps {
 }
 export function TransactionsProvider({ children }: TransactionsProviderProps) {
   const [categorys, setCategorys] = useState<Category[]>([])
+  const [transactionsSummary, setTransactionsSummary] = useState<
+    TransactionData[]
+  >([])
   const [transactions, setTransactions] = useState<Transaction>({
     data: [],
     pagination: {
@@ -88,6 +93,29 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
             pages: Array.from({ length: totalPages }, (v, k) => k + 1),
           },
         })
+
+        fetchTransactionsSummary(params)
+      }
+    },
+    [],
+  )
+
+  const fetchTransactionsSummary = useCallback(
+    async ({ type, q }: RequestProps) => {
+      const params = {
+        type,
+        q,
+        _sort: 'createdAt',
+        _order: 'desc',
+      }
+
+      if (type === '') delete params.type
+      if (q === '') delete params.q
+
+      const response = await api.get(`/transactions`, { params })
+
+      if (response.status === 200) {
+        setTransactionsSummary(response.data)
       }
     },
     [],
@@ -110,13 +138,15 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
   useEffect(() => {
     fetchCategorys()
     fetchTransactions({ _page: 0 })
-  }, [fetchTransactions])
+  }, [fetchTransactions, fetchTransactionsSummary])
 
   return (
     <TransactionsContext.Provider
       value={{
         transactions,
         fetchTransactions,
+        transactionsSummary,
+        fetchTransactionsSummary,
         categorys,
         getDescriptionCategory,
       }}
