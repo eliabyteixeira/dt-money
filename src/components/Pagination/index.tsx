@@ -34,7 +34,7 @@ export function Pagination() {
                   _page: 0,
                 })
               }
-              // disabled={transactions.pagination.currentPage === 1}
+              disabled={transactions.pagination.currentPage === 1}
             >
               <CaretDoubleLeft size={22} />
             </button>
@@ -90,10 +90,10 @@ export function Pagination() {
                   _page: transactions.pagination.totalPages,
                 })
               }
-              // disabled={
-              //   transactions.pagination.currentPage ===
-              //   transactions.pagination.totalPages
-              // }
+              disabled={
+                transactions.pagination.currentPage ===
+                transactions.pagination.totalPages
+              }
             >
               <CaretDoubleRight size={22} />
             </button>
