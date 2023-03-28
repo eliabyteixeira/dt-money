@@ -30,6 +30,15 @@ export const SearchFormContainer = styled.form`
     border-radius: 6px;
     cursor: pointer;
 
+    label {
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      label {
+        display: flex;
+      }
+    }
     &:disabled {
       opacity: 0.6;
       cursor: not-allowed;
