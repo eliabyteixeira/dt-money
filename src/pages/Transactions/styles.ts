@@ -2,28 +2,33 @@ import styled from 'styled-components'
 
 export const TransactionsContainer = styled.main`
   width: 100%;
-  max-width: 1120px;
+  max-width: 1200px;
   margin: 2rem auto 0;
   padding: 0 1.5rem;
 `
 
-export const TransactionsTable = styled.table`
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0 0.5rem;
-  margin-top: 1rem;
+export const TransactionsTable = styled.div`
+  overflow-x: auto;
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 0.5rem;
+    margin-top: 1rem;
 
-  td {
-    padding: 1.25rem 1rem;
-    background: ${(props) => props.theme['gray-700']};
-    font-size: 0.9rem;
-    &:first-child {
-      border-top-left-radius: 6px;
-      border-bottom-left-radius: 6px;
-    }
-    &:last-child {
-      border-top-right-radius: 6px;
-      border-bottom-right-radius: 6px;
+    td {
+      padding: 1.25rem 1rem;
+      background: ${(props) => props.theme['gray-700']};
+      font-size: 0.9rem;
+
+      &:first-child {
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+      }
+
+      &:last-child {
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+      }
     }
   }
 `
@@ -49,6 +54,7 @@ export const FilterContainer = styled.div`
   gap: 1rem;
   border-radius: 6px;
   margin-bottom: 1rem;
+
   button {
     color: ${(props) => props.theme['gray-400']};
     padding: 0.5rem 1rem;
