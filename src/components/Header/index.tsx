@@ -3,6 +3,7 @@ import * as Dialog from '@radix-ui/react-dialog'
 import logoImg from '../../assets/logo.svg'
 import { NewTransactionModal } from '../NewTransactionModal'
 import { useState } from 'react'
+import { Plus } from 'phosphor-react'
 
 export function Header() {
   const [openModal, setOpenModal] = useState<true | false>(false)
@@ -20,7 +21,7 @@ export function Header() {
         >
           <Dialog.Trigger asChild>
             <NewTransactionButton onClick={() => openChangeModal(!openModal)}>
-              Nova transação
+              <Plus size={18} /> transação
             </NewTransactionButton>
           </Dialog.Trigger>
           <NewTransactionModal onOpenChangeModal={openChangeModal} />

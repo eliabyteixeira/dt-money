@@ -7,7 +7,7 @@ export const HeaderContainer = styled.header`
 
 export const HeaderContent = styled.div`
   width: 100%;
-  max-width: 1120px;
+  max-width: 1200px;
   display: flex;
   margin: 0 auto;
   padding: 0 1.5rem;
@@ -23,6 +23,10 @@ export const NewTransactionButton = styled.button`
   font-weight: bold;
   padding: 0 1.25rem;
   border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   cursor: pointer;
 
   &:hover {
