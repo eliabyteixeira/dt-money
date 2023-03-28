@@ -11,9 +11,9 @@ Application for personal financial control developed in ReactJS for study purpos
 - [x] add input transaction date
 - [x] add pagination on transactios list
 - [x] add pagination last and first pages
+- [x] make the application fully responsive
 - [] add toast notification service
 - [] add login control
 - [] add router control
 - [] add filter per date (from -> to) 
 - [] add delete transaction action
-- [] make the application fully responsive

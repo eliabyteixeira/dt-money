@@ -175,6 +175,14 @@
       "type": "outcome",
       "createdAt": "2022-04-01 00:00:00 GMT-0300",
       "id": 22
+    },
+    {
+      "description": "Curso de violao",
+      "price": 140,
+      "category": "compra-de-equipamentos",
+      "type": "outcome",
+      "createdAt": "2022-02-02 00:00:00 GMT-0300",
+      "id": 23
     }
   ],
   "categorys": [

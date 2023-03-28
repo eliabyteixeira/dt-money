@@ -16,8 +16,6 @@ export function Pagination() {
     },
   )
 
-  console.log(transactions.pagination)
-
   return (
     <PaginationContainer>
       <nav>
