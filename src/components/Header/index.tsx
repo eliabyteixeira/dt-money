@@ -21,7 +21,7 @@ export function Header() {
         >
           <Dialog.Trigger asChild>
             <NewTransactionButton onClick={() => openChangeModal(!openModal)}>
-              <Plus size={18} /> transação
+              <Plus size={18} /> Transação
             </NewTransactionButton>
           </Dialog.Trigger>
           <NewTransactionModal onOpenChangeModal={openChangeModal} />

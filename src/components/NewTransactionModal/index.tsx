@@ -15,6 +15,7 @@ import { api } from '../../lib/axios'
 import { useContextSelector } from 'use-context-selector'
 import { TransactionsContext } from '../../contexts/TransactionsContext'
 import { dateToSave } from '../../utils/formatter'
+import { toast } from 'react-toastify'
 
 const newTransactionFormSchema = zod.object({
   description: zod.string(),
@@ -43,7 +44,7 @@ export function NewTransactionModal({
   } = useForm<NewTransactionFormInputs>({
     resolver: zodResolver(newTransactionFormSchema),
     defaultValues: {
-      type: 'income',
+      type: 'outcome',
     },
   })
 
@@ -66,9 +67,12 @@ export function NewTransactionModal({
     })
 
     if (response.status === 201) {
+      toast.success('Nova transação cadastrada com sucesso!')
       reset()
       onOpenChangeModal(false)
       fetchTransactions({ _page: 0 })
+    } else {
+      toast.error('Ops... não foi possivel inclui uma nova transação!')
     }
   }
 
@@ -104,6 +108,7 @@ export function NewTransactionModal({
             required
             {...register('createdAt', {
               valueAsDate: true,
+              maxLength: 10,
             })}
           />
 
