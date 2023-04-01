@@ -13,7 +13,7 @@ function App() {
       <TransactionsProvider>
         <Transactions />
       </TransactionsProvider>
-      <ToastContainer />
+      <ToastContainer theme="colored" />
     </ThemeProvider>
   )
 }

@@ -7,7 +7,18 @@ Application for personal financial control developed in ReactJS for study purpos
 - `npm run dev` to running 
 - `npm run dev:server` to start json-server (fake backend)
 
-# todo
+# technologies and libraries used
+- react
+- zod 
+- scheduler
+- radix-ui
+- phosphor-react
+- react-toastify
+- react-hook-form
+- styled-components
+- use-context-selector
+
+# extra features added to the project
 - [x] add input transaction date
 - [x] add loading
 - [x] add pagination on transactios list
