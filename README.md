@@ -1,22 +1,27 @@
 # dt-money
-Application for personal financial control developed in ReactJS for study purposes do curso Ignite da Rocketseat!
-#ignite #rocketseat
+Application for personal financial control made in ReactJS and TypeScript developed during Rocketseat's Ignite course
 
 # running the application
 - `npm i` to install the dependences
 - `npm run dev` to running 
+- `npm run build` to build application 
 - `npm run dev:server` to start json-server (fake backend)
 
-# technologies and libraries used
-- react
+# technologies
+- ReactJS
+- TypeScript
+
+# additional tools and libraries used
 - zod 
-- scheduler
 - radix-ui
-- phosphor-react
 - react-toastify
 - react-hook-form
 - styled-components
 - use-context-selector
+- json-server
+- es-lint
+- axios
+- vite
 
 # extra features added to the project
 - [x] add input transaction date
