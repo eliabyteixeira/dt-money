@@ -1,4 +1,5 @@
 import { ReactNode, useCallback, useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 import { createContext } from 'use-context-selector'
 import { api } from '../lib/axios'
 
@@ -79,6 +80,8 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
 
       const response = await api.get(`/transactions`, { params })
 
+      console.log(response)
+
       if (response.status === 200) {
         const totalCount: number = response.headers['x-total-count'] || 0
         const totalPages: number = Math.ceil(totalCount / 10) || 1
@@ -93,8 +96,9 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
             pages: Array.from({ length: totalPages }, (v, k) => k + 1),
           },
         })
-
         fetchTransactionsSummary(params)
+      } else {
+        toast.error('Erro ao tentar listar as transaçōes!')
       }
     },
     [],
@@ -116,6 +120,8 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
 
       if (response.status === 200) {
         setTransactionsSummary(response.data)
+      } else {
+        toast.error('Erro ao tentar listar o resumoi das transaçōes!')
       }
     },
     [],
@@ -125,6 +131,8 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     const response = await api.get('/categorys')
     if (response.status === 200) {
       setCategorys(response.data)
+    } else {
+      toast.error('Erro ao tentar listar as categorias!')
     }
   }
 

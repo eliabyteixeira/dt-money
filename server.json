@@ -183,6 +183,46 @@
       "type": "outcome",
       "createdAt": "2022-02-02 00:00:00 GMT-0300",
       "id": 23
+    },
+    {
+      "description": "Teste para novo toast",
+      "price": 100,
+      "category": "aluguel",
+      "type": "outcome",
+      "createdAt": "2022-02-10 00:00:00 GMT-0300",
+      "id": 24
+    },
+    {
+      "description": "sdfsdf",
+      "price": 100,
+      "category": "compra-de-equipamentos",
+      "type": "income",
+      "createdAt": "2222-02-01 00:00:00 GMT-0300",
+      "id": 25
+    },
+    {
+      "description": "Teste novo toast",
+      "price": 100,
+      "category": "compra-de-equipamentos",
+      "type": "income",
+      "createdAt": "2022-04-01 00:00:00 GMT-0300",
+      "id": 26
+    },
+    {
+      "description": "Teste",
+      "price": 100,
+      "category": "combustivel",
+      "type": "income",
+      "createdAt": "2023-03-31 00:00:00 GMT-0300",
+      "id": 27
+    },
+    {
+      "description": "Teste local",
+      "price": 120,
+      "category": "aluguel",
+      "type": "outcome",
+      "createdAt": "2023-04-01 00:00:00 GMT-0300",
+      "id": 28
     }
   ],
   "categorys": [
