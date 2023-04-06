@@ -6,6 +6,22 @@ export const GlobalStyle = createGlobalStyle`
       padding: 0;
       box-sizing: border-box;
    }
+
+   * {
+      &::-webkit-scrollbar {
+         height: 0.25rem;
+         width: 0.25rem;
+      }
+
+      &::-webkit-scrollbar-track {
+         background: transparent;
+      }
+
+      &::-webkit-scrollbar-thumb {
+         background-color:  ${(props) => props.theme['green-500']};
+         border-radius: 1rem;
+      }
+   }
    
    :focus {
       outline: 0;
@@ -20,5 +36,5 @@ export const GlobalStyle = createGlobalStyle`
 
    body, input, textarea, button {
       font: 400 1rem Roboto, sans-serif;
-   }
+   }  
 `

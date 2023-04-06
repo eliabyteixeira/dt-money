@@ -11,9 +11,9 @@ export const SummaryContainer = styled.section`
   margin-top: -5rem;
   overflow-x: auto;
 
-  &::-webkit-scrollbar {
+  /* &::-webkit-scrollbar {
     display: none;
-  }
+  } */
 `
 
 interface SummaryCardProps {
