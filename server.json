@@ -225,7 +225,7 @@
       "id": 28
     }
   ],
-  "categorys": [
+  "categories": [
     {
       "id": 1,
       "description": "Salário",
@@ -297,6 +297,126 @@
       "description": "Cuidados pessoais",
       "type": "outcome",
       "value": "cuidados-pessoais"
+    }
+  ],
+  "stores": [
+    {
+      "id": 1,
+      "name": "Shein",
+      "category": "Roupas",
+      "href": "http://google.com/",
+      "thumbnailUrl": "shein.png",
+      "banner": "shein.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Petlove",
+      "category": "Cosméticos",
+      "href": "http://google.com/",
+      "thumbnailUrl": "petlove.png",
+      "banner": "petlove.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Mobly",
+      "category": "Perfumaria",
+      "href": "http://google.com/",
+      "thumbnailUrl": "mobly.png",
+      "banner": "mobly.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Shein",
+      "category": "Roupas",
+      "href": "http://google.com/",
+      "thumbnailUrl": "shein.png",
+      "banner": "shein.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Shein",
+      "category": "Cosméticos",
+      "href": "http://google.com/",
+      "thumbnailUrl": "shein.png",
+      "banner": "shein.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Shein",
+      "category": "Perfumaria",
+      "href": "http://google.com/",
+      "thumbnailUrl": "shein.png",
+      "banner": "shein.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Shein",
+      "category": "Perfumaria",
+      "href": "http://google.com/",
+      "thumbnailUrl": "shein.png",
+      "banner": "shein.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Shein",
+      "category": "Perfumaria",
+      "href": "http://google.com/",
+      "thumbnailUrl": "shein.png",
+      "banner": "shein.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Shein",
+      "category": "Perfumaria",
+      "href": "http://google.com/",
+      "thumbnailUrl": "shein.png",
+      "banner": "shein.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Shein",
+      "category": "Roupas",
+      "href": "http://google.com/",
+      "thumbnailUrl": "shein.png",
+      "banner": "shein.jpg"
+    },
+    {
+      "id": 11,
+      "name": "Shein",
+      "category": "Perfumaria",
+      "href": "http://google.com/",
+      "thumbnailUrl": "shein.png",
+      "banner": "shein.jpg"
+    },
+    {
+      "id": 12,
+      "name": "Shein",
+      "category": "Perfumaria",
+      "href": "http://google.com/",
+      "thumbnailUrl": "shein.png",
+      "banner": "shein.jpg"
+    },
+    {
+      "id": 13,
+      "name": "Shein",
+      "category": "Perfumaria",
+      "href": "http://google.com/",
+      "thumbnailUrl": "shein.png",
+      "banner": "shein.jpg"
+    }
+  ],
+  "banners": [
+    {
+      "id": 1,
+      "image": "banner-1.jpg",
+      "thumbnail": "nike.svg",
+      "link": "http://nike.com" 
+    },
+    {
+      "id": 2,
+      "image": "banner-1.jpg",
+      "thumbnail": "nike.svg",
+      "link": "http://nike.com"
     }
   ]
 }

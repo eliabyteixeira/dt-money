@@ -31,8 +31,8 @@ interface Category {
 
 type RequestProps = {
   _page?: number
-  type?: string
-  q?: string
+  type?: string | null
+  query?: string | null
 }
 interface TransactionsContextType {
   transactions: Transaction
@@ -41,6 +41,8 @@ interface TransactionsContextType {
   fetchTransactionsSummary: (params: RequestProps) => Promise<void>
   categorys: Category[]
   getDescriptionCategory: (category: string) => any
+  isLoading: boolean
+  setIsLoading: (value: boolean) => void
 }
 
 export const TransactionsContext = createContext({} as TransactionsContextType)
@@ -49,9 +51,8 @@ interface TransactionsProviderProps {
 }
 export function TransactionsProvider({ children }: TransactionsProviderProps) {
   const [categorys, setCategorys] = useState<Category[]>([])
-  const [transactionsSummary, setTransactionsSummary] = useState<
-    TransactionData[]
-  >([])
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [summary, setSummary] = useState<TransactionData[]>([])
   const [transactions, setTransactions] = useState<Transaction>({
     data: [],
     pagination: {
@@ -64,23 +65,17 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
   })
 
   const fetchTransactions = useCallback(
-    async ({ type, _page, q }: RequestProps) => {
+    async ({ type = null, _page = 1, query = null }: RequestProps) => {
       const params = {
         type,
-        q,
+        query,
         _sort: 'createdAt',
         _order: 'desc',
         _page,
         _limit: 10,
       }
 
-      if (type === '') delete params.type
-      if (q === '') delete params.q
-      if (_page === 0) delete params._page
-
       const response = await api.get(`/transactions`, { params })
-
-      console.log(response)
 
       if (response.status === 200) {
         const totalCount: number = response.headers['x-total-count'] || 0
@@ -105,30 +100,27 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
   )
 
   const fetchTransactionsSummary = useCallback(
-    async ({ type, q }: RequestProps) => {
+    async ({ type = null, query = null }: RequestProps) => {
       const params = {
         type,
-        q,
+        query,
         _sort: 'createdAt',
         _order: 'desc',
       }
 
-      if (type === '') delete params.type
-      if (q === '') delete params.q
-
       const response = await api.get(`/transactions`, { params })
 
       if (response.status === 200) {
-        setTransactionsSummary(response.data)
+        setSummary(response.data)
       } else {
-        toast.error('Erro ao tentar listar o resumoi das transaçōes!')
+        toast.error('Erro ao tentar listar o resumo das transaçōes!')
       }
     },
     [],
   )
 
   async function fetchCategorys() {
-    const response = await api.get('/categorys')
+    const response = await api.get('/categories')
     if (response.status === 200) {
       setCategorys(response.data)
     } else {
@@ -153,10 +145,12 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
       value={{
         transactions,
         fetchTransactions,
-        transactionsSummary,
+        transactionsSummary: summary,
         fetchTransactionsSummary,
         categorys,
         getDescriptionCategory,
+        isLoading,
+        setIsLoading,
       }}
     >
       {children}

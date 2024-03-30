@@ -5,7 +5,7 @@
    "type": "module",
    "scripts": {
       "dev": "vite",
-      "dev:server": "json-server server.json -w -d 600 ",
+      "dev:server": "json-server server.json -w -d 600",
       "lint": "eslint src --ext .ts,.tsx",
       "lint:fix": "eslint src --ext .ts,.tsx --fix",
       "build": "tsc && vite build",

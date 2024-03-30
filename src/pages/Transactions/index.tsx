@@ -25,20 +25,13 @@ export function Transactions() {
       <Summary />
       <TransactionsContainer>
         <FilterContainer>
-          <button
-            onClick={() => fetchTransactions({ type: '', _page: 1 })}
-            autoFocus={true}
-          >
+          <button onClick={() => fetchTransactions({})} autoFocus={true}>
             Tudo
           </button>
-          <button
-            onClick={() => fetchTransactions({ type: 'income', _page: 1 })}
-          >
+          <button onClick={() => fetchTransactions({ type: 'income' })}>
             Entradas
           </button>
-          <button
-            onClick={() => fetchTransactions({ type: 'outcome', _page: 1 })}
-          >
+          <button onClick={() => fetchTransactions({ type: 'outcome' })}>
             Saídas
           </button>
         </FilterContainer>

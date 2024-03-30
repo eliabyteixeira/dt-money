@@ -30,7 +30,7 @@ export function SearchForm() {
   )
 
   async function handleSearchTransactions({ query }: SearchFormInputs) {
-    await fetchTransactions({ q: query })
+    await fetchTransactions({ query })
   }
 
   return (

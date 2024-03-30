@@ -21,7 +21,7 @@ export function Pagination() {
       <nav>
         <span>
           {transactions.pagination.countItens > 0
-            ? `Mostrando ${transactions.pagination.countItens} registros de um total de ${transactions.pagination.totalItens}`
+            ? `Mostrando ${transactions.pagination.countItens} de ${transactions.pagination.totalItens} registros`
             : `Nenhum registro encontrado`}
         </span>
         <ul>

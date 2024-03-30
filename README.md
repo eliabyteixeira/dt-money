@@ -34,3 +34,10 @@ Application for personal financial control made in ReactJS and TypeScript develo
 - [] add router control
 - [] add filter per date (from -> to) 
 - [] add delete transaction action
+
+ --no-cors=true --host=elite.local
+```sh
+# install react-query
+yarn add @tanstack/react-query
+yarn add -D @tanstack/eslint-plugin-query
+```
